@@ -23,10 +23,6 @@
           optionsText: 'optText',
           optionsValue: 'optVal'
       "></select>
-      <label for="iColor">Font Color:</label>
-      <input type="color" name="iColor" id="iColor"
-        data-bind="value: fontColor"
-      >
     </div>
     <div id="border">
       <h3>Border and Sizing</h3>
@@ -39,6 +35,18 @@
     </div>
     <div id="color">
       <h3>Color</h3>
+      <label for="iFontColor">Font Color:</label>
+      <input type="color" name="iFontColor" id="iFontColor"
+        data-bind="value: fontColor"
+      >
+      <label for="iBaseColor">Base Color:</label>
+      <input type="color" name="iBaseColor" id="iBaseColor"
+        data-bind="value: baseColor"
+      >
+      <label for="iBorderColor">Border Color:</label>
+      <input type="color" name="iBorderColor" id="iBorderColor"
+        data-bind="value: borderColor"
+      >
     </div>
   </div>
 

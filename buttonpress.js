@@ -2,16 +2,25 @@ function buttonViewModel() {
   self = this;
   self.text = ko.observable('Text');
   self.fonts = ko.observableArray([
-    {optText: 'Arial', optVal: 'Arial'},
-    {optText: 'Times New Roman', optVal: '"Times New Roman"'}
+    {optText: 'Arial', optVal: 'Arial, sans-serif'},
+    {optText: 'Times New Roman', optVal: '"Times New Roman", serif'}
   ]);
   self.selectedFont = ko.observable('Arial')
-  self.fontColor = ko.observable('#000')
 
-  this.btnStyle = ko.computed(function(){
+  //Colors
+  self.fontColor = ko.observable('#000000')
+  self.baseColor = ko.observable('#cccccc')
+  self.borderColor = ko.observable('#333333')
+  self.gradientColor = ko.observable('#cccccc')
+
+  self.btnStyle = ko.computed(function(){
     var style = {
       fontFamily: self.selectedFont,
-      color: self.fontColor()
+      borderWidth: "1px",
+      borderStyle: "solid",
+      color: self.fontColor(),
+      backgroundColor: self.baseColor(),
+      borderColor: self.borderColor()
     };
     return style;
   },this);
