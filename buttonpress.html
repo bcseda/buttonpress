@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="buttonpress.css">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="knockout.js"></script>
+  <script src="buttonpress.js"></script>
+</head>
+<body>
+  <div id="options">
+    <div id="basic">
+      <h3>Basic Options</h3>
+      <label for="iText">Text:</label>
+      <input type="text" data-bind="value: text">
+      <label for="iFont">Font:</label>
+      <select name="Fonts"
+        id="iFont"
+        data-bind="options: fonts,
+          value: selectedFont,
+          options: fonts,
+          optionsText: 'optText',
+          optionsValue: 'optVal'
+      "></select>
+      <label for="iColor">Font Color:</label>
+      <input type="color" name="iColor" id="iColor"
+        data-bind="value: fontColor"
+      >
+    </div>
+    <div id="border">
+      <h3>Border and Sizing</h3>
+    </div>
+    <div id="boxShadow">
+      <h3>Box Shadow</h3>
+    </div>
+    <div id="textShadow">
+      <h3>Text Shadow</h3>
+    </div>
+    <div id="color">
+      <h3>Color</h3>
+    </div>
+  </div>
+
+  <div id="output">
+    <div id="preview">
+      <h3>Preview</h3>
+      <span id="button" data-bind="text: text, style: btnStyle"></span>
+    </div>
+    <div id="code">
+      <h3>CSS</h3>
+      <code>asdf</code>
+    </div>
+  </div>
+</body>
+</html>

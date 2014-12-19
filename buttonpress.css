@@ -1,0 +1,14 @@
+#options {
+  width: 500px;
+  float: left;
+  display: block;
+}
+
+#options > div {
+  border: 1px solid #666;
+}
+
+#output{
+  float: left;
+  width: 500px;
+}
