@@ -8,6 +8,15 @@
   border: 1px solid #666;
 }
 
+.param {
+  width: 250px;
+}
+
+.param label {
+  display: block;
+  width: 250px;
+}
+
 #output{
   float: left;
   width: 500px;

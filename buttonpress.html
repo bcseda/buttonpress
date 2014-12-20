@@ -16,21 +16,40 @@
       <input type="text" data-bind="value: text">
       <label for="iFont">Font:</label>
       <select name="Fonts"
-        id="iFont"
-        data-bind="options: fonts,
-          value: selectedFont,
-          options: fonts,
-          optionsText: 'optText',
-          optionsValue: 'optVal'
+      id="iFont"
+      data-bind="options: fonts,
+      value: selectedFont,
+      options: fonts,
+      optionsText: 'optText',
+      optionsValue: 'optVal'
       "></select>
     </div>
     <div id="border">
       <h3>Border and Sizing</h3>
-      <label for="iBorderWidth">Border Width</label>
-      <input type="range" id="iBorderWidth"
+      <div class="param">
+        <label for="iWidth">Button Width:</label>
+        <span data-bind="text: width"></span>px
+        <input type="range" id="iWidth"
+        min="0" max="500" step="1"
+        data-bind="value: width"
+        />
+      </div>
+      <div class="param">
+        <label for="iHeight">Button Height:</label>
+        <span data-bind="text: height"></span>px
+        <input type="range" id="iHeight"
+        min="0" max="100" step="1"
+        data-bind="value: height"
+        />
+      </div>
+      <div class="param">
+        <label for="iBorderWidth">Border Width:</label>
+        <span data-bind="text: borderWidth"></span>px
+        <input type="range" id="iBorderWidth"
         min="0" max="10" step="1"
         data-bind="value: borderWidth"
-      />
+        />
+      </div>
     </div>
     <div id="boxShadow">
       <h3>Box Shadow</h3>
@@ -42,15 +61,15 @@
       <h3>Color</h3>
       <label for="iFontColor">Font Color:</label>
       <input type="color" name="iFontColor" id="iFontColor"
-        data-bind="value: fontColor"
+      data-bind="value: fontColor"
       >
       <label for="iBaseColor">Base Color:</label>
       <input type="color" name="iBaseColor" id="iBaseColor"
-        data-bind="value: baseColor"
+      data-bind="value: baseColor"
       >
       <label for="iBorderColor">Border Color:</label>
       <input type="color" name="iBorderColor" id="iBorderColor"
-        data-bind="value: borderColor"
+      data-bind="value: borderColor"
       >
     </div>
   </div>
