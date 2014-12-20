@@ -7,6 +7,9 @@ function buttonViewModel() {
   ]);
   self.selectedFont = ko.observable('Arial')
 
+  //Border
+  self.borderWidth = ko.observable(1);
+
   //Colors
   self.fontColor = ko.observable('#000000')
   self.baseColor = ko.observable('#cccccc')
@@ -16,11 +19,11 @@ function buttonViewModel() {
   self.btnStyle = ko.computed(function(){
     var style = {
       fontFamily: self.selectedFont,
-      borderWidth: "1px",
+      borderWidth: self.borderWidth()+'px',
       borderStyle: "solid",
-      color: self.fontColor(),
-      backgroundColor: self.baseColor(),
-      borderColor: self.borderColor()
+      color: self.fontColor,
+      backgroundColor: self.baseColor,
+      borderColor: self.borderColor
     };
     return style;
   },this);

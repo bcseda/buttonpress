@@ -26,6 +26,11 @@
     </div>
     <div id="border">
       <h3>Border and Sizing</h3>
+      <label for="iBorderWidth">Border Width</label>
+      <input type="range" id="iBorderWidth"
+        min="0" max="10" step="1"
+        data-bind="value: borderWidth"
+      />
     </div>
     <div id="boxShadow">
       <h3>Box Shadow</h3>
@@ -53,7 +58,7 @@
   <div id="output">
     <div id="preview">
       <h3>Preview</h3>
-      <span id="button" data-bind="text: text, style: btnStyle"></span>
+      <div id="button" data-bind="text: text, style: btnStyle"></div>
     </div>
     <div id="code">
       <h3>CSS</h3>
