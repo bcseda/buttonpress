@@ -1,0 +1,98 @@
+doctype html
+head
+  title ButtonPress
+  meta charset="UTF-8"
+  link rel="stylesheet" href="buttonpress.css"
+  script src="http://code.jquery.com/jquery-latest.min.js"
+  script src="knockout.js"
+  script src="buttonpress.js"
+
+body
+  #options
+    #basic
+      h3 Basic
+
+      label for="iText" Text:
+      input#iText type="text" data-bind="value: text"
+
+      label for="iFont" Font:
+      select#iFont[
+        name="Fonts"
+        data-bind="options: fonts,
+          value: selectedFont,
+        options: fonts,
+        optionsText: 'optText',
+        optionsValue: 'optVal'"
+      ]
+
+    #border
+      h3 Broder and Sizing
+      //width
+      .param
+        label for="iWidth" Button Width:
+        .rangeVal
+          span data-bind="text: width"
+          | px
+          input#iWidth[
+            type="range"
+            min="0" max="100" step="1"
+            data-bind="value: width"
+          ]
+
+      //height
+      .param
+        label for="iHeight" Button Height:
+        .rangeVal
+          span data-bind="text: height"
+          | px
+          input#iHeight[
+            type="range"
+            min="0" max="100" step="1"
+            data-bind="value: height"
+          ]
+
+      //border width
+      .param
+        label for="iBorderWidth" Border Width:
+        .rangeVal
+          span data-bind="text: borderWidth"
+          | px
+          input#iHeight[
+            type="range"
+            min="0" max="10" step="1"
+            data-bind="value: borderWidth"
+          ]
+    #boxShadow
+      h3 Box Shadow
+    #textShadow
+      h3 Text Shadow
+    #color
+      h3 Color
+      //FontColor
+      label for="iFontColor" Font Color:
+      input#iFontColor[
+        type="color" name="iFontColor"
+        data-bind="value: fontColor"
+      ]
+
+      //base color
+      label for="iBaseColor" Base Color:
+      input#iBaseColor[
+        type="color" name="iBaseColor"
+        data-bind="value: baseColor"
+      ]
+
+      //border color
+      label for="iBorderColor" Border Color:
+      input#iBorderColor[
+        type="color" name="iBorderColor"
+        data-bind="value: borderColor"
+      ]
+
+  #output
+    #preview
+      h3 Preview
+      #button data-bind="text: text, style: btnStyle"
+    #code
+      h3 CSS
+      code code
