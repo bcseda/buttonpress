@@ -37,7 +37,7 @@ body
           em Italic
 
     #border
-      h3 Broder and Sizing
+      h3 Border and Sizing
       //width
       .param
         label for="iWidth" Button Width:
@@ -88,7 +88,28 @@ body
 
 
       //Horizontal text alignment
+      .param
+        label for="iHorizAlign" Horizontal Alignment:
+        .rangeVal
+          span data-bind="text: horizAlign"
+          |%
+          input#iHorizAlign[
+            type="range"
+            min="-50" max="50" step="1"
+            data-bind="value: horizAlign"
+          ]
+
       //Font size
+      .param
+        label for="iFontSize" Border Radius:
+        .rangeVal
+          span data-bind="text: fontSize"
+          | px
+          input#iFontSize[
+            type="range"
+            min="8" max="60" step="1"
+            data-bind="value: fontSize"
+          ]
 
       //border width
       .param
@@ -104,12 +125,57 @@ body
 
     #boxShadow
       h3 Box Shadow
-      //box shadow (cb)
-      //Inset (cb)
+      .cbContainer
+        //box shadow
+        input#iBoxShadow type="checkbox" data-bind="checked: boxShadow"
+        label for="iBoxShadow" Box Shadow
+        //Inset
+        input#iBoxShadowInset type="checkbox" data-bind="checked: boxShadowInset"
+        label for="iBoxShadowInset" Inset
       //Vertical position (range)
+      .param
+        label for="iBoxShadowVerticalAlign" Vertical Alignment:
+        .rangeVal
+          span data-bind="text: boxShadowVerticalAlign"
+          | px
+          input#iBoxShadowVerticalAlign[
+            type="range"
+            min="-50" max="50" step="1"
+            data-bind="value: boxShadowVerticalAlign"
+          ]
       //Horizontal postion (range)
+      .param
+        label for="iBoxShadowHorizontalAlign" Horizontal Alignment:
+        .rangeVal
+          span data-bind="text: boxShadowHorizontalAlign"
+          | px
+          input#iBoxShadowHorizontalAlign[
+            type="range"
+            min="-50" max="50" step="1"
+            data-bind="value: boxShadowHorizontalAlign"
+          ]
       //Blur radius (range)
+      .param
+        label for="iBoxShadowBlurRadius" Blur Radius
+        .rangeVal
+          span data-bind="text: boxShadowBlurRadius"
+          | px
+          input#iBoxShadowBlurRadius[
+            type="range"
+            min="0" max="50" step="1"
+            data-bind="value: boxShadowBlurRadius"
+          ]
       //Spread radius (range)
+      .param
+        label for="iBoxShadowSpreadRadius" Spread Radius:
+        .rangeVal
+          span data-bind="text: boxShadowSpreadRadius"
+          | px
+          input#iBoxShadowSpreadRadius[
+            type="range"
+            min="-50" max="50" step="1"
+            data-bind="value: boxShadowSpreadRadius"
+          ]
 
     #textShadow
       h3 Text Shadow
@@ -121,25 +187,33 @@ body
     #color
       h3 Color
       //FontColor
-      label for="iFontColor" Font Color:
-      input#iFontColor[
-        type="color" name="iFontColor"
-        data-bind="value: fontColor"
-      ]
-
+      .param
+        label for="iFontColor" Font Color:
+        input#iFontColor[
+          type="color" name="iFontColor"
+          data-bind="value: fontColor"
+        ]
       //base color
-      label for="iBaseColor" Base Color:
-      input#iBaseColor[
-        type="color" name="iBaseColor"
-        data-bind="value: baseColor"
-      ]
-
+      .param
+        label for="iBaseColor" Base Color:
+        input#iBaseColor[
+          type="color" name="iBaseColor"
+          data-bind="value: baseColor"
+        ]
       //border color
-      label for="iBorderColor" Border Color:
-      input#iBorderColor[
-        type="color" name="iBorderColor"
-        data-bind="value: borderColor"
-      ]
+      .param
+        label for="iBorderColor" Border Color:
+        input#iBorderColor[
+          type="color" name="iBorderColor"
+          data-bind="value: borderColor"
+        ]
+      //border color
+      .param
+        label for="iBoxShadowColor" BoxShadow Color:
+        input#iBoxShadowColor[
+          type="color" name="iBoxShadowColor"
+          data-bind="value: boxShadowColor"
+        ]
 
   #output
     #preview
