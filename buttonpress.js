@@ -13,6 +13,11 @@ self.height = ko.observable(20);
 
 //Border
 self.borderWidth = ko.observable(1);
+self.borderRadiusVal = ko.observable(6);
+self.borderRadiusTL = ko.observable(true);
+self.borderRadiusTR = ko.observable(true);
+self.borderRadiusBL = ko.observable(true);
+self.borderRadiusBR = ko.observable(true);
 
 //Colors
 self.fontColor = ko.observable('#000000');
@@ -23,6 +28,24 @@ self.gradientColor = ko.observable('#cccccc');
 function px(val){
   return val + 'px';
 }
+
+self.borderRadii = ko.computed( function() {
+  var radii = '';
+  var bools = [self.borderRadiusTL(),
+    self.borderRadiusTR(),
+    self.borderRadiusBR(),
+    self.borderRadiusBL()];
+  for (i=0; i < bools.length; i++) {
+    if (bools[i] == true)
+      radii += self.borderRadiusVal() + 'px';
+    else
+      radii += 0;
+    if (i != bools.length)
+      radii += ' ';
+  }
+  return radii;
+});
+
 
 self.btnStyle = ko.computed(function(){
 
@@ -36,6 +59,7 @@ self.btnStyle = ko.computed(function(){
     fontFamily: self.selectedFont,
     borderWidth: self.borderWidth()+'px',
     borderStyle: "solid",
+    borderRadius: self.borderRadii(),
     color: self.fontColor,
     backgroundColor: self.baseColor,
     borderColor: self.borderColor

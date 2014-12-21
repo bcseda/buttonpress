@@ -12,18 +12,29 @@ body
     #basic
       h3 Basic
 
-      label for="iText" Text:
-      input#iText type="text" data-bind="value: text"
+      .param
+        label for="iText" Text:
+        input#iText type="text" data-bind="value: text"
 
-      label for="iFont" Font:
-      select#iFont[
-        name="Fonts"
-        data-bind="options: fonts,
-          value: selectedFont,
-        options: fonts,
-        optionsText: 'optText',
-        optionsValue: 'optVal'"
-      ]
+      .param
+        label Class Name:
+
+      .param
+        label for="iFont" Font:
+        select#iFont[
+          name="Fonts"
+          data-bind="options: fonts,
+            value: selectedFont,
+          options: fonts,
+          optionsText: 'optText',
+          optionsValue: 'optVal'"
+        ]
+
+      .param
+        label
+          strong Bold
+        label
+          em Italic
 
     #border
       h3 Broder and Sizing
@@ -35,7 +46,7 @@ body
           | px
           input#iWidth[
             type="range"
-            min="0" max="100" step="1"
+            min="0" max="200" step="1"
             data-bind="value: width"
           ]
 
@@ -51,6 +62,34 @@ body
             data-bind="value: height"
           ]
 
+      //apply border radius
+      label Border Radius
+      .cbContainer
+        input#iBorderRadiusTL type="checkbox" data-bind="checked: borderRadiusTL"
+        label for="iBorderRadiusTL" Top Left
+        input#iBorderRadiusTR type="checkbox" data-bind="checked: borderRadiusTR"
+        label for="iBorderRadiusTR" Top Right
+        input#iBorderRadiusBL type="checkbox" data-bind="checked: borderRadiusBL"
+        label for="iBorderRadiusBL" Bottom Left
+        input#iBorderRadiusBR type="checkbox" data-bind="checked: borderRadiusBR"
+        label for="iBorderRadiusBR" Bottom Right
+
+      //Border radius (range)
+      .param
+        label for="iBorderRadius" Border Radius:
+        .rangeVal
+          span data-bind="text: borderRadiusVal"
+          | px
+          input#iBorderRadius[
+            type="range"
+            min="0" max="42" step="1"
+            data-bind="value: borderRadiusVal"
+          ]
+
+
+      //Horizontal text alignment
+      //Font size
+
       //border width
       .param
         label for="iBorderWidth" Border Width:
@@ -62,10 +101,23 @@ body
             min="0" max="10" step="1"
             data-bind="value: borderWidth"
           ]
+
     #boxShadow
       h3 Box Shadow
+      //box shadow (cb)
+      //Inset (cb)
+      //Vertical position (range)
+      //Horizontal postion (range)
+      //Blur radius (range)
+      //Spread radius (range)
+
     #textShadow
       h3 Text Shadow
+      //text shadow (cb)
+      //Vertical position (range)
+      //Horizontal postion (range)
+      //Blur radius
+
     #color
       h3 Color
       //FontColor
