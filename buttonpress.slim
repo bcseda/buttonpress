@@ -179,10 +179,43 @@ body
 
     #textShadow
       h3 Text Shadow
-      //text shadow (cb)
+      .cbContainer
+        //text shadow
+        input#iTextShadow type="checkbox" data-bind="checked: textShadow"
+        label for="iTextShadow" Box Shadow
       //Vertical position (range)
+      .param
+        label for="iTextShadowVerticalAlign" Vertical Alignment:
+        .rangeVal
+          span data-bind="text: textShadowVerticalAlign"
+          | px
+          input#iTextShadowVerticalAlign[
+            type="range"
+            min="-50" max="50" step="1"
+            data-bind="value: textShadowVerticalAlign"
+          ]
       //Horizontal postion (range)
-      //Blur radius
+      .param
+        label for="iTextShadowHorizontalAlign" Horizontal Alignment:
+        .rangeVal
+          span data-bind="text: textShadowHorizontalAlign"
+          | px
+          input#iTextShadowHorizontalAlign[
+            type="range"
+            min="-50" max="50" step="1"
+            data-bind="value: textShadowHorizontalAlign"
+          ]
+      //Blur radius (range)
+      .param
+        label for="iTextShadowBlurRadius" Blur Radius
+        .rangeVal
+          span data-bind="text: textShadowBlurRadius"
+          | px
+          input#iTextShadowBlurRadius[
+            type="range"
+            min="0" max="50" step="1"
+            data-bind="value: textShadowBlurRadius"
+          ]
 
     #color
       h3 Color
@@ -207,12 +240,19 @@ body
           type="color" name="iBorderColor"
           data-bind="value: borderColor"
         ]
-      //border color
+      //box shadow color
       .param
-        label for="iBoxShadowColor" BoxShadow Color:
+        label for="iBoxShadowColor" Box Shadow Color:
         input#iBoxShadowColor[
           type="color" name="iBoxShadowColor"
           data-bind="value: boxShadowColor"
+        ]
+      //text shadow color
+      .param
+        label for="iTextShadowColor" Text Shadow Color:
+        input#iTextShadowColor[
+          type="color" name="iTextShadowColor"
+          data-bind="value: textShadowColor"
         ]
 
   #output

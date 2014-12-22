@@ -79,8 +79,26 @@ function buttonViewModel() {
       return boxShadow;
   });
 
-  self.btnStyle = ko.computed(function(){
+  //Text Shadow
+  self.textShadow = ko.observable(true);
+  self.textShadowVerticalAlign = ko.observable(0);
+  self.textShadowHorizontalAlign = ko.observable(0);
+  self.textShadowBlurRadius = ko.observable(0);
+  self.textShadowColor = ko.observable('#ffffff');
+  self.appliedTextShadow = ko.computed(function(){
+      var textShadow = ''
+      if (self.textShadow() == true) {
+        textShadow += px(self.textShadowHorizontalAlign())
+          + ' ' + px(self.textShadowVerticalAlign())
+          + ' ' + px(self.textShadowBlurRadius())
+          + ' ' + self.textShadowColor();
+      } else {
+        textShadow = 'none';
+      }
+      return textShadow;
+  });
 
+  self.btnStyle = ko.computed(function(){
     var style = {
       //hard coded
       textAlign: 'center',
@@ -100,11 +118,9 @@ function buttonViewModel() {
       borderRadius: self.borderRadii(),
       borderColor: self.borderColor,
       backgroundColor: self.baseColor,
-
-      boxShadow: self.appliedBoxShadow
+      boxShadow: self.appliedBoxShadow,
+      textShadow: self.appliedTextShadow
     };
-
-
     return style;
   },this);
 }
