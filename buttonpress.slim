@@ -17,7 +17,8 @@ body
         input#iText type="text" data-bind="value: text"
 
       .param
-        label Class Name:
+        label for="iClassName" Class Name:
+        input#iClassName type="text" data-bind="value: className"
 
       .param
         label for="iFont" Font:
@@ -25,16 +26,30 @@ body
           name="Fonts"
           data-bind="options: fonts,
             value: selectedFont,
-          options: fonts,
-          optionsText: 'optText',
-          optionsValue: 'optVal'"
+            options: fonts,
+            optionsText: 'optText',
+            optionsValue: 'optVal'"
         ]
 
       .param
+        input#iBold type="checkbox" data-bind="checked: bold"
         label
           strong Bold
+        input#iItalic type="checkbox" data-bind="checked: italic"
         label
           em Italic
+
+      //Font size
+      .param
+        label for="iFontSize" Font Size:
+        .rangeVal
+          span data-bind="text: fontSize"
+          | px
+          input#iFontSize[
+            type="range"
+            min="8" max="60" step="1"
+            data-bind="value: fontSize"
+          ]
 
     #border
       h3 Border and Sizing
@@ -85,8 +100,6 @@ body
             min="0" max="42" step="1"
             data-bind="value: borderRadiusVal"
           ]
-
-
       //Horizontal text alignment
       .param
         label for="iHorizAlign" Horizontal Alignment:
@@ -98,19 +111,6 @@ body
             min="-50" max="50" step="1"
             data-bind="value: horizAlign"
           ]
-
-      //Font size
-      .param
-        label for="iFontSize" Border Radius:
-        .rangeVal
-          span data-bind="text: fontSize"
-          | px
-          input#iFontSize[
-            type="range"
-            min="8" max="60" step="1"
-            data-bind="value: fontSize"
-          ]
-
       //border width
       .param
         label for="iBorderWidth" Border Width:
@@ -261,4 +261,4 @@ body
       #button data-bind="text: text, style: btnStyle"
     #code
       h3 CSS
-      code code
+      code data-bind="text: btnCode"

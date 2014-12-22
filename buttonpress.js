@@ -2,10 +2,13 @@ function buttonViewModel() {
   self = this;
 
   function px(val){
-    return val + 'px';
+    if (val != 0)
+      val = val + 'px'
+    return val;
   }
 
   self.text = ko.observable('Text');
+  self.className = ko.observable('classname');
 
   //Font
   self.fonts = ko.observableArray([
@@ -14,6 +17,8 @@ function buttonViewModel() {
   ]);
   self.selectedFont = ko.observable('Arial');
   self.fontSize = ko.observable(15);
+  self.bold = ko.observable(false);
+  self.italic = ko.observable(false);
 
   //Sizing
   self.width = ko.observable(100);
@@ -99,32 +104,62 @@ function buttonViewModel() {
   });
 
   self.btnStyle = ko.computed(function(){
+    var fontWeight = 'normal';
+    var fontStyle = 'normal';
+
+    if (self.bold() == true)
+      fontWeight = 'bold'
+    if (self.italic() == true)
+      fontStyle = 'italic'
+
     var style = {
       //hard coded
       textAlign: 'center',
       //Text
-      textIndent: self.appliedHorizAlign,
+      textIndent: self.appliedHorizAlign(),
       lineHeight: px(self.height()),
-      color: self.fontColor,
+      color: self.fontColor(),
       //Size
       width: px(self.width()),
       height: px(self.height()) ,
       //Font
-      fontFamily: self.selectedFont,
+      fontFamily: self.selectedFont(),
       fontSize: px(self.fontSize()),
       //Border
       borderWidth: self.borderWidth()+'px',
       borderStyle: "solid",
       borderRadius: self.borderRadii(),
-      borderColor: self.borderColor,
-      backgroundColor: self.baseColor,
-      boxShadow: self.appliedBoxShadow,
-      textShadow: self.appliedTextShadow
+      borderColor: self.borderColor(),
+      backgroundColor: self.baseColor(),
+      boxShadow: self.appliedBoxShadow(),
+      textShadow: self.appliedTextShadow(),
+      fontWeight: fontWeight,
+      fontStyle: fontStyle
     };
     return style;
   },this);
+
+  self.btnCode = ko.computed(function(){
+    var output = "." + self.className()  + "{";
+    var rules = {
+      width: "123px",
+      height: 'asdf'
+    };
+    rules = self.btnStyle();
+    $.each(rules, function(key, val){
+      key = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+      output += "\n\t" + key + ": " + val + ";";
+    })
+    for (i=1; i < 2; i++) {
+    }
+    output += "\n}";
+    return output
+  });
 }
 
 $(function(){
+  $('input[type="range"]').on('input',function(){
+    $(this).change()
+  });
   ko.applyBindings(new buttonViewModel());
 });
