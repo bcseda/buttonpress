@@ -44,12 +44,12 @@ function buttonViewModel() {
       self.borderRadiusBR(),
       self.borderRadiusBL()];
     for (i=0; i < bools.length; i++) {
+      if (i != 0)
+        radii += ' ';
       if (bools[i] == true)
         radii += self.borderRadiusVal() + 'px';
       else
         radii += 0;
-      if (i != bools.length)
-        radii += ' ';
     }
     return radii;
   });
@@ -131,11 +131,16 @@ function buttonViewModel() {
       borderRadius: self.borderRadii(),
       borderColor: self.borderColor(),
       backgroundColor: self.baseColor(),
-      boxShadow: self.appliedBoxShadow(),
-      textShadow: self.appliedTextShadow(),
       fontWeight: fontWeight,
       fontStyle: fontStyle
     };
+
+    if (self.appliedBoxShadow() != 'none')
+      style.boxShadow = self.appliedBoxShadow();
+
+    if (self.appliedTextShadow() != 'none')
+      style.textShadow = self.appliedTextShadow();
+
     return style;
   },this);
 
@@ -157,7 +162,33 @@ function buttonViewModel() {
   });
 }
 
+function hideFieldsonClick(){
+  //box shadow
+  $('#iBoxShadow').on('change',function(){
+    var sliders = $('#boxShadow .param')
+    var cbs = $(this).siblings('input')
+    if (this.checked == false) {
+      sliders.hide()
+      cbs.attr("disabled", true);
+    }
+    else {
+      cbs.removeAttr("disabled");
+      sliders.show()
+    }
+  });
+  $('#iTextShadow').on('change',function(){
+    var sliders = $('#textShadow .param')
+    if (this.checked == false) {
+      sliders.hide()
+    }
+    else {
+      sliders.show()
+    }
+  });
+}
+
 $(function(){
+  hideFieldsonClick();
   $('input[type="range"]').on('input',function(){
     $(this).change()
   });
