@@ -24,6 +24,7 @@ A simple CSS button generator
 
   Simply open **buttonpress.html** in the browser of your choice
 
-  If slim template is altered, executed the included ruby script:
+  If slim template is altered, render the slim template to html via the
+following:
 
-  `ruby slimUp.rb`
+  `slimrb buttonpress.slim buttonpress.html`
