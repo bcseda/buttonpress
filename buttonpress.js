@@ -1,42 +1,80 @@
 function buttonViewModel() {
   self = this;
 
+  var defaults = {
+    text:         'Text',
+    className:    'classname',
+    selectedFont: 'Arial',
+    fontSize:     15,
+    bold:         false,
+    italic:       false,
+    width:        100,
+    height:       20,
+    horizAlign:   0,
+    fontColor:    '#000000',
+    baseColor:    '#cccccc',
+    borderColor:  '#999999',
+    gradientColor:'#cccccc',
+    boxShadowColor:  '#666666',
+    textShadowColor: '#ffffff',
+    borderWidth:  1,
+    borderRadiusVal: 6,
+    borderRadiusBool: true,
+    boxShadow: true,
+    boxShadowInset: true,
+    boxShadowVerticalAlign: 0,
+    boxShadowHorizontalAlign: 0,
+    boxShadowBlurRadius: 0,
+    boxShadowSpreadRadius: 0,
+    textShadow: true,
+    textShadowVerticalAlign: 0,
+    textShadowHorizontalAlign: 0,
+    textShadowBlurRadius: 0,
+    textShadowSpreadRadius: 0,
+  }
+
+  var corners = ['TL','TR','BL','BR'];
+
   function px(val){
     if (val != 0)
       val = val + 'px'
     return val;
   }
 
-  self.text = ko.observable('Text');
-  self.className = ko.observable('classname');
+  function parseId(str){
+    return str.charAt(1).toLowerCase() + str.slice(2)
+  }
 
-  //Font
+  self.revert = function(t,e){
+    var target = parseId(e.target.id);
+    t[target](defaults[target]);
+  }
+
+  //observable
+  for(var key in defaults){
+    if (key.indexOf('Bool') > -1) {
+      $.each(corners, function(i,corner){
+        boolKey = key.replace('Bool',corners[i])
+        self[boolKey] = ko.observable(defaults[key]);
+      })
+    }
+    else
+      self[key] = ko.observable(defaults[key])
+  }
+
   self.fonts = ko.observableArray([
-    {optText: 'Arial', optVal: 'Arial, sans-serif'},
-    {optText: 'Times New Roman', optVal: '"Times New Roman", serif'}
+    {optText: 'Arial', optVal: 'Arial, Helvetica, sans-serif'},
+    {optText: 'Courier', optVal: '"Courier New", Courier, monospace'},
+    {optText: 'Georgia', optVal: 'Georgia, serif'},
+    {optText: 'Times New Roman',
+        optVal: '"Times New Roman", Times, serif'}
   ]);
-  self.selectedFont = ko.observable('Arial');
-  self.fontSize = ko.observable(15);
-  self.bold = ko.observable(false);
-  self.italic = ko.observable(false);
 
-  //Sizing
-  self.width = ko.observable(100);
-  self.height = ko.observable(20);
-
-  //Horizontal Alignment
-  self.horizAlign = ko.observable(0);
+  //computed
   self.appliedHorizAlign = ko.computed(function(){
     return px(self.width() * self.horizAlign() / 100);
   })
 
-  //Border
-  self.borderWidth = ko.observable(1);
-  self.borderRadiusVal = ko.observable(6);
-  self.borderRadiusTL = ko.observable(true);
-  self.borderRadiusTR = ko.observable(true);
-  self.borderRadiusBL = ko.observable(true);
-  self.borderRadiusBR = ko.observable(true);
   self.borderRadii = ko.computed( function() {
     var radii = '';
     var bools = [self.borderRadiusTL(),
@@ -54,20 +92,6 @@ function buttonViewModel() {
     return radii;
   });
 
-  //Colors
-  self.fontColor = ko.observable('#000000');
-  self.baseColor = ko.observable('#cccccc');
-  self.borderColor = ko.observable('#333333');
-  self.gradientColor = ko.observable('#cccccc');
-
-  //Box Shadow
-  self.boxShadow = ko.observable(true);
-  self.boxShadowInset = ko.observable(true);
-  self.boxShadowVerticalAlign = ko.observable(0);
-  self.boxShadowHorizontalAlign = ko.observable(0);
-  self.boxShadowBlurRadius = ko.observable(0);
-  self.boxShadowSpreadRadius = ko.observable(0);
-  self.boxShadowColor = ko.observable('#ffffff');
   self.appliedBoxShadow = ko.computed(function(){
       var boxShadow = ''
       if (self.boxShadow() == true) {
@@ -84,12 +108,6 @@ function buttonViewModel() {
       return boxShadow;
   });
 
-  //Text Shadow
-  self.textShadow = ko.observable(true);
-  self.textShadowVerticalAlign = ko.observable(0);
-  self.textShadowHorizontalAlign = ko.observable(0);
-  self.textShadowBlurRadius = ko.observable(0);
-  self.textShadowColor = ko.observable('#ffffff');
   self.appliedTextShadow = ko.computed(function(){
       var textShadow = ''
       if (self.textShadow() == true) {
@@ -115,6 +133,8 @@ function buttonViewModel() {
     var style = {
       //hard coded
       textAlign: 'center',
+      borderStyle: "solid",
+
       //Text
       textIndent: self.appliedHorizAlign(),
       lineHeight: px(self.height()),
@@ -126,8 +146,7 @@ function buttonViewModel() {
       fontFamily: self.selectedFont(),
       fontSize: px(self.fontSize()),
       //Border
-      borderWidth: self.borderWidth()+'px',
-      borderStyle: "solid",
+      borderWidth: px(self.borderWidth()),
       borderRadius: self.borderRadii(),
       borderColor: self.borderColor(),
       backgroundColor: self.baseColor(),
@@ -146,17 +165,11 @@ function buttonViewModel() {
 
   self.btnCode = ko.computed(function(){
     var output = "." + self.className()  + "{";
-    var rules = {
-      width: "123px",
-      height: 'asdf'
-    };
-    rules = self.btnStyle();
+    var rules = self.btnStyle();
     $.each(rules, function(key, val){
       key = key.replace(/([A-Z])/g, '-$1').toLowerCase();
       output += "\n\t" + key + ": " + val + ";";
     })
-    for (i=1; i < 2; i++) {
-    }
     output += "\n}";
     return output
   });
@@ -192,5 +205,5 @@ $(function(){
   $('input[type="range"]').on('input',function(){
     $(this).change()
   });
-  ko.applyBindings(new buttonViewModel());
+  ko.applyBindings(new buttonViewModel);
 });

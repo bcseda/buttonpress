@@ -12,8 +12,11 @@ body
     #basic
       h3 Basic
 
+      div data-bind="template: {name: 'text-template', data: textObj}"
+
       .param
         label for="iText" Text:
+        input#rText.revert type="button" value="Revert" data-bind="click: revert"
         input#iText type="text" data-bind="value: text"
 
       .param
@@ -43,6 +46,7 @@ body
       .param
         label for="iFontSize" Font Size:
         .rangeVal
+          input#rFontSize.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: fontSize"
           | px
           input#iFontSize[
@@ -57,6 +61,7 @@ body
       .param
         label for="iWidth" Button Width:
         .rangeVal
+          input#rWidth.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: width"
           | px
           input#iWidth[
@@ -69,6 +74,7 @@ body
       .param
         label for="iHeight" Button Height:
         .rangeVal
+          input#rHeight.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: height"
           | px
           input#iHeight[
@@ -93,6 +99,7 @@ body
       .param
         label for="iBorderRadius" Border Radius:
         .rangeVal
+          input#rBorderRadiusVal.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: borderRadiusVal"
           | px
           input#iBorderRadius[
@@ -104,6 +111,7 @@ body
       .param
         label for="iHorizAlign" Horizontal Alignment:
         .rangeVal
+          input#rHorizAlign.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: horizAlign"
           |%
           input#iHorizAlign[
@@ -115,6 +123,7 @@ body
       .param
         label for="iBorderWidth" Border Width:
         .rangeVal
+          input#rBorderWidth.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: borderWidth"
           | px
           input#iHeight[
@@ -136,6 +145,7 @@ body
       .param
         label for="iBoxShadowVerticalAlign" Vertical Alignment:
         .rangeVal
+          input#rBoxShadowVerticalAlign.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: boxShadowVerticalAlign"
           | px
           input#iBoxShadowVerticalAlign[
@@ -147,6 +157,7 @@ body
       .param
         label for="iBoxShadowHorizontalAlign" Horizontal Alignment:
         .rangeVal
+          input#rBoxShadowHorizontalAlign.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: boxShadowHorizontalAlign"
           | px
           input#iBoxShadowHorizontalAlign[
@@ -158,6 +169,7 @@ body
       .param
         label for="iBoxShadowBlurRadius" Blur Radius
         .rangeVal
+          input#rBoxShadowBlurRadius.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: boxShadowBlurRadius"
           | px
           input#iBoxShadowBlurRadius[
@@ -169,6 +181,7 @@ body
       .param
         label for="iBoxShadowSpreadRadius" Spread Radius:
         .rangeVal
+          input#rBoxShadowSpreadRadius.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: boxShadowSpreadRadius"
           | px
           input#iBoxShadowSpreadRadius[
@@ -187,6 +200,7 @@ body
       .param
         label for="iTextShadowVerticalAlign" Vertical Alignment:
         .rangeVal
+          input#rTextShadowVerticalAlign.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: textShadowVerticalAlign"
           | px
           input#iTextShadowVerticalAlign[
@@ -198,6 +212,7 @@ body
       .param
         label for="iTextShadowHorizontalAlign" Horizontal Alignment:
         .rangeVal
+          input#rTextShadowHorizontalAlign.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: textShadowHorizontalAlign"
           | px
           input#iTextShadowHorizontalAlign[
@@ -209,6 +224,7 @@ body
       .param
         label for="iTextShadowBlurRadius" Blur Radius
         .rangeVal
+          input#rTextShadowBlurRadius.revert type="button" value="Revert" data-bind="click: revert"
           span data-bind="text: textShadowBlurRadius"
           | px
           input#iTextShadowBlurRadius[
@@ -260,5 +276,11 @@ body
       h3 Preview
       #button data-bind="text: text, style: btnStyle"
     #code
+      h4 data-bind="text: textVal"
       h3 CSS
       code data-bind="text: btnCode"
+
+  script type="text/html" id ="text-template"
+    .param
+      label data-bind="text: label, attr: {for: inputId}"
+      input type="text" data-bind="value: val, attr: {id: inputId}"
