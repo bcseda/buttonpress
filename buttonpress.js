@@ -200,8 +200,22 @@ function hideFieldsonClick(){
   });
 }
 
+function applyCollapse(){
+  $('#options h3').each(function(i){
+    var el = $(this)
+    el.on('click',function(i){
+      $('.params').hide();
+      el.siblings('.params').toggle()
+    });
+    console.log(el.parent().attr('id'))
+    if (el.parent().attr('id') != 'basic')
+      el.siblings('.params').toggle()
+  });
+}
+
 $(function(){
   hideFieldsonClick();
+  applyCollapse();
   $('input[type="range"]').on('input',function(){
     $(this).change()
   });

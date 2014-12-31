@@ -11,276 +11,273 @@ body
   #options
     #basic
       h3 Basic
+      .params
+        .param
+          label for="iText" Text:
+          input#iText type="text" data-bind="value: text"
 
-      div data-bind="template: {name: 'text-template', data: textObj}"
+        .param
+          label for="iClassName" Class Name:
+          input#iClassName type="text" data-bind="value: className"
 
-      .param
-        label for="iText" Text:
-        input#rText.revert type="button" value="Revert" data-bind="click: revert"
-        input#iText type="text" data-bind="value: text"
-
-      .param
-        label for="iClassName" Class Name:
-        input#iClassName type="text" data-bind="value: className"
-
-      .param
-        label for="iFont" Font:
-        select#iFont[
-          name="Fonts"
-          data-bind="options: fonts,
-            value: selectedFont,
-            options: fonts,
-            optionsText: 'optText',
-            optionsValue: 'optVal'"
-        ]
-
-      .param
-        input#iBold type="checkbox" data-bind="checked: bold"
-        label
-          strong Bold
-        input#iItalic type="checkbox" data-bind="checked: italic"
-        label
-          em Italic
-
-      //Font size
-      .param
-        label for="iFontSize" Font Size:
-        .rangeVal
-          input#rFontSize.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: fontSize"
-          | px
-          input#iFontSize[
-            type="range"
-            min="8" max="60" step="1"
-            data-bind="value: fontSize"
+        .param
+          label for="iFont" Font:
+          select#iFont[
+            name="Fonts"
+            data-bind="options: fonts,
+              value: selectedFont,
+              options: fonts,
+              optionsText: 'optText',
+              optionsValue: 'optVal'"
           ]
+
+        .param
+          input#iBold type="checkbox" data-bind="checked: bold"
+          label
+            strong Bold
+          input#iItalic type="checkbox" data-bind="checked: italic"
+          label
+            em Italic
+
+        //Font size
+        .param
+          label for="iFontSize" Font Size:
+          .rangeVal
+            input#rFontSize.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: fontSize"
+            | px
+            input#iFontSize[
+              type="range"
+              min="8" max="60" step="1"
+              data-bind="value: fontSize"
+            ]
 
     #border
       h3 Border and Sizing
-      //width
-      .param
-        label for="iWidth" Button Width:
-        .rangeVal
-          input#rWidth.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: width"
-          | px
-          input#iWidth[
-            type="range"
-            min="0" max="200" step="1"
-            data-bind="value: width"
-          ]
+      .params
+        //width
+        .param
+          label for="iWidth" Button Width:
+          .rangeVal
+            input#rWidth.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: width"
+            | px
+            input#iWidth[
+              type="range"
+              min="0" max="200" step="1"
+              data-bind="value: width"
+            ]
 
-      //height
-      .param
-        label for="iHeight" Button Height:
-        .rangeVal
-          input#rHeight.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: height"
-          | px
-          input#iHeight[
-            type="range"
-            min="0" max="100" step="1"
-            data-bind="value: height"
-          ]
+        //height
+        .param
+          label for="iHeight" Button Height:
+          .rangeVal
+            input#rHeight.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: height"
+            | px
+            input#iHeight[
+              type="range"
+              min="0" max="100" step="1"
+              data-bind="value: height"
+            ]
 
-      //apply border radius
-      label Border Radius
-      .cbContainer
-        input#iBorderRadiusTL type="checkbox" data-bind="checked: borderRadiusTL"
-        label for="iBorderRadiusTL" Top Left
-        input#iBorderRadiusTR type="checkbox" data-bind="checked: borderRadiusTR"
-        label for="iBorderRadiusTR" Top Right
-        input#iBorderRadiusBL type="checkbox" data-bind="checked: borderRadiusBL"
-        label for="iBorderRadiusBL" Bottom Left
-        input#iBorderRadiusBR type="checkbox" data-bind="checked: borderRadiusBR"
-        label for="iBorderRadiusBR" Bottom Right
+        //apply border radius
+        label Border Radius
+        .cbContainer
+          input#iBorderRadiusTL type="checkbox" data-bind="checked: borderRadiusTL"
+          label for="iBorderRadiusTL" Top Left
+          input#iBorderRadiusTR type="checkbox" data-bind="checked: borderRadiusTR"
+          label for="iBorderRadiusTR" Top Right
+          input#iBorderRadiusBL type="checkbox" data-bind="checked: borderRadiusBL"
+          label for="iBorderRadiusBL" Bottom Left
+          input#iBorderRadiusBR type="checkbox" data-bind="checked: borderRadiusBR"
+          label for="iBorderRadiusBR" Bottom Right
 
-      //Border radius (range)
-      .param
-        label for="iBorderRadius" Border Radius:
-        .rangeVal
-          input#rBorderRadiusVal.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: borderRadiusVal"
-          | px
-          input#iBorderRadius[
-            type="range"
-            min="0" max="42" step="1"
-            data-bind="value: borderRadiusVal"
-          ]
-      //Horizontal text alignment
-      .param
-        label for="iHorizAlign" Horizontal Alignment:
-        .rangeVal
-          input#rHorizAlign.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: horizAlign"
-          |%
-          input#iHorizAlign[
-            type="range"
-            min="-50" max="50" step="1"
-            data-bind="value: horizAlign"
-          ]
-      //border width
-      .param
-        label for="iBorderWidth" Border Width:
-        .rangeVal
-          input#rBorderWidth.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: borderWidth"
-          | px
-          input#iHeight[
-            type="range"
-            min="0" max="10" step="1"
-            data-bind="value: borderWidth"
-          ]
+        //Border radius (range)
+        .param
+          label for="iBorderRadius" Border Radius:
+          .rangeVal
+            input#rBorderRadiusVal.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: borderRadiusVal"
+            | px
+            input#iBorderRadius[
+              type="range"
+              min="0" max="42" step="1"
+              data-bind="value: borderRadiusVal"
+            ]
+        //Horizontal text alignment
+        .param
+          label for="iHorizAlign" Horizontal Alignment:
+          .rangeVal
+            input#rHorizAlign.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: horizAlign"
+            |%
+            input#iHorizAlign[
+              type="range"
+              min="-50" max="50" step="1"
+              data-bind="value: horizAlign"
+            ]
+        //border width
+        .param
+          label for="iBorderWidth" Border Width:
+          .rangeVal
+            input#rBorderWidth.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: borderWidth"
+            | px
+            input#iHeight[
+              type="range"
+              min="0" max="10" step="1"
+              data-bind="value: borderWidth"
+            ]
 
     #boxShadow
       h3 Box Shadow
-      .cbContainer
-        //box shadow
-        input#iBoxShadow type="checkbox" data-bind="checked: boxShadow"
-        label for="iBoxShadow" Box Shadow
-        //Inset
-        input#iBoxShadowInset type="checkbox" data-bind="checked: boxShadowInset"
-        label for="iBoxShadowInset" Inset
-      //Vertical position (range)
-      .param
-        label for="iBoxShadowVerticalAlign" Vertical Alignment:
-        .rangeVal
-          input#rBoxShadowVerticalAlign.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: boxShadowVerticalAlign"
-          | px
-          input#iBoxShadowVerticalAlign[
-            type="range"
-            min="-50" max="50" step="1"
-            data-bind="value: boxShadowVerticalAlign"
-          ]
-      //Horizontal postion (range)
-      .param
-        label for="iBoxShadowHorizontalAlign" Horizontal Alignment:
-        .rangeVal
-          input#rBoxShadowHorizontalAlign.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: boxShadowHorizontalAlign"
-          | px
-          input#iBoxShadowHorizontalAlign[
-            type="range"
-            min="-50" max="50" step="1"
-            data-bind="value: boxShadowHorizontalAlign"
-          ]
-      //Blur radius (range)
-      .param
-        label for="iBoxShadowBlurRadius" Blur Radius
-        .rangeVal
-          input#rBoxShadowBlurRadius.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: boxShadowBlurRadius"
-          | px
-          input#iBoxShadowBlurRadius[
-            type="range"
-            min="0" max="50" step="1"
-            data-bind="value: boxShadowBlurRadius"
-          ]
-      //Spread radius (range)
-      .param
-        label for="iBoxShadowSpreadRadius" Spread Radius:
-        .rangeVal
-          input#rBoxShadowSpreadRadius.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: boxShadowSpreadRadius"
-          | px
-          input#iBoxShadowSpreadRadius[
-            type="range"
-            min="-50" max="50" step="1"
-            data-bind="value: boxShadowSpreadRadius"
-          ]
+      .params
+        .cbContainer
+          //box shadow
+          input#iBoxShadow type="checkbox" data-bind="checked: boxShadow"
+          label for="iBoxShadow" Box Shadow
+          //Inset
+          input#iBoxShadowInset type="checkbox" data-bind="checked: boxShadowInset"
+          label for="iBoxShadowInset" Inset
+        //Vertical position (range)
+        .param
+          label for="iBoxShadowVerticalAlign" Vertical Alignment:
+          .rangeVal
+            input#rBoxShadowVerticalAlign.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: boxShadowVerticalAlign"
+            | px
+            input#iBoxShadowVerticalAlign[
+              type="range"
+              min="-50" max="50" step="1"
+              data-bind="value: boxShadowVerticalAlign"
+            ]
+        //Horizontal postion (range)
+        .param
+          label for="iBoxShadowHorizontalAlign" Horizontal Alignment:
+          .rangeVal
+            input#rBoxShadowHorizontalAlign.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: boxShadowHorizontalAlign"
+            | px
+            input#iBoxShadowHorizontalAlign[
+              type="range"
+              min="-50" max="50" step="1"
+              data-bind="value: boxShadowHorizontalAlign"
+            ]
+        //Blur radius (range)
+        .param
+          label for="iBoxShadowBlurRadius" Blur Radius
+          .rangeVal
+            input#rBoxShadowBlurRadius.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: boxShadowBlurRadius"
+            | px
+            input#iBoxShadowBlurRadius[
+              type="range"
+              min="0" max="50" step="1"
+              data-bind="value: boxShadowBlurRadius"
+            ]
+        //Spread radius (range)
+        .param
+          label for="iBoxShadowSpreadRadius" Spread Radius:
+          .rangeVal
+            input#rBoxShadowSpreadRadius.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: boxShadowSpreadRadius"
+            | px
+            input#iBoxShadowSpreadRadius[
+              type="range"
+              min="-50" max="50" step="1"
+              data-bind="value: boxShadowSpreadRadius"
+            ]
 
     #textShadow
       h3 Text Shadow
-      .cbContainer
-        //text shadow
-        input#iTextShadow type="checkbox" data-bind="checked: textShadow"
-        label for="iTextShadow" Text Shadow
-      //Vertical position (range)
-      .param
-        label for="iTextShadowVerticalAlign" Vertical Alignment:
-        .rangeVal
-          input#rTextShadowVerticalAlign.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: textShadowVerticalAlign"
-          | px
-          input#iTextShadowVerticalAlign[
-            type="range"
-            min="-50" max="50" step="1"
-            data-bind="value: textShadowVerticalAlign"
-          ]
-      //Horizontal postion (range)
-      .param
-        label for="iTextShadowHorizontalAlign" Horizontal Alignment:
-        .rangeVal
-          input#rTextShadowHorizontalAlign.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: textShadowHorizontalAlign"
-          | px
-          input#iTextShadowHorizontalAlign[
-            type="range"
-            min="-50" max="50" step="1"
-            data-bind="value: textShadowHorizontalAlign"
-          ]
-      //Blur radius (range)
-      .param
-        label for="iTextShadowBlurRadius" Blur Radius
-        .rangeVal
-          input#rTextShadowBlurRadius.revert type="button" value="Revert" data-bind="click: revert"
-          span data-bind="text: textShadowBlurRadius"
-          | px
-          input#iTextShadowBlurRadius[
-            type="range"
-            min="0" max="50" step="1"
-            data-bind="value: textShadowBlurRadius"
-          ]
+      .params
+        .cbContainer
+          //text shadow
+          input#iTextShadow type="checkbox" data-bind="checked: textShadow"
+          label for="iTextShadow" Text Shadow
+        //Vertical position (range)
+        .param
+          label for="iTextShadowVerticalAlign" Vertical Alignment:
+          .rangeVal
+            input#rTextShadowVerticalAlign.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: textShadowVerticalAlign"
+            | px
+            input#iTextShadowVerticalAlign[
+              type="range"
+              min="-50" max="50" step="1"
+              data-bind="value: textShadowVerticalAlign"
+            ]
+        //Horizontal postion (range)
+        .param
+          label for="iTextShadowHorizontalAlign" Horizontal Alignment:
+          .rangeVal
+            input#rTextShadowHorizontalAlign.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: textShadowHorizontalAlign"
+            | px
+            input#iTextShadowHorizontalAlign[
+              type="range"
+              min="-50" max="50" step="1"
+              data-bind="value: textShadowHorizontalAlign"
+            ]
+        //Blur radius (range)
+        .param
+          label for="iTextShadowBlurRadius" Blur Radius
+          .rangeVal
+            input#rTextShadowBlurRadius.revert type="button" value="Revert" data-bind="click: revert"
+            span data-bind="text: textShadowBlurRadius"
+            | px
+            input#iTextShadowBlurRadius[
+              type="range"
+              min="0" max="50" step="1"
+              data-bind="value: textShadowBlurRadius"
+            ]
 
     #color
       h3 Color
-      //FontColor
-      .param
-        label for="iFontColor" Font Color:
-        input#iFontColor[
-          type="color" name="iFontColor"
-          data-bind="value: fontColor"
-        ]
-      //base color
-      .param
-        label for="iBaseColor" Base Color:
-        input#iBaseColor[
-          type="color" name="iBaseColor"
-          data-bind="value: baseColor"
-        ]
-      //border color
-      .param
-        label for="iBorderColor" Border Color:
-        input#iBorderColor[
-          type="color" name="iBorderColor"
-          data-bind="value: borderColor"
-        ]
-      //box shadow color
-      .param
-        label for="iBoxShadowColor" Box Shadow Color:
-        input#iBoxShadowColor[
-          type="color" name="iBoxShadowColor"
-          data-bind="value: boxShadowColor"
-        ]
-      //text shadow color
-      .param
-        label for="iTextShadowColor" Text Shadow Color:
-        input#iTextShadowColor[
-          type="color" name="iTextShadowColor"
-          data-bind="value: textShadowColor"
-        ]
+      .params
+        //FontColor
+        .param
+          label for="iFontColor" Font Color:
+          input#iFontColor[
+            type="color" name="iFontColor"
+            data-bind="value: fontColor"
+          ]
+        //base color
+        .param
+          label for="iBaseColor" Base Color:
+          input#iBaseColor[
+            type="color" name="iBaseColor"
+            data-bind="value: baseColor"
+          ]
+        //border color
+        .param
+          label for="iBorderColor" Border Color:
+          input#iBorderColor[
+            type="color" name="iBorderColor"
+            data-bind="value: borderColor"
+          ]
+        //box shadow color
+        .param
+          label for="iBoxShadowColor" Box Shadow Color:
+          input#iBoxShadowColor[
+            type="color" name="iBoxShadowColor"
+            data-bind="value: boxShadowColor"
+          ]
+        //text shadow color
+        .param
+          label for="iTextShadowColor" Text Shadow Color:
+          input#iTextShadowColor[
+            type="color" name="iTextShadowColor"
+            data-bind="value: textShadowColor"
+          ]
 
   #output
     #preview
       h3 Preview
-      #button data-bind="text: text, style: btnStyle"
+      #previewField
+        #button data-bind="text: text, style: btnStyle"
     #code
-      h4 data-bind="text: textVal"
       h3 CSS
-      code data-bind="text: btnCode"
-
-  script type="text/html" id ="text-template"
-    .param
-      label data-bind="text: label, attr: {for: inputId}"
-      input type="text" data-bind="value: val, attr: {id: inputId}"
+      #codeField
+        code data-bind="text: btnCode"

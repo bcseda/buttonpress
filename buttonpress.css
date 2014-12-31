@@ -1,11 +1,27 @@
 #options {
   width: 500px;
+  margin-right: 2em;
   float: left;
   display: block;
 }
 
 #options > div {
   border: 1px solid #666;
+}
+
+#options h3 {
+  cursor: pointer;
+}
+
+h3 {
+  margin: 0;
+  padding: 0.5em;
+  background-color: #555;
+  color: #fff;
+}
+
+.params{
+  padding: 1em;
 }
 
 .param {
@@ -20,6 +36,23 @@
 #output {
   float: left;
   width: 500px;
+}
+
+#previewField{
+  width: 100%;
+  min-height: 100px;
+  text-align: center;
+}
+
+#button{
+  margin: 50px auto;
+}
+
+#codeField{
+  margin: 1em;
+  padding: 1em 1.5em;
+  background-color: #f0f0f0;
+  border-radius: 4px;
 }
 
 code {
